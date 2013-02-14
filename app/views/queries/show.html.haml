@@ -1,0 +1,23 @@
+%p#notice= notice
+%h2 Query
+%p
+  %b Mail server:
+  = link_to @query.mail_server.name, mail_server_path(@query.mail_server_id)
+%p
+  %b Block List Server
+  = link_to @query.block_list_server.name, block_list_server_path(@query.block_list_server_id)
+
+%h2 Results
+%table
+  %tr
+    %th Status
+    %th Response
+  - @query.query_results.each do |result|
+    %tr
+      %td=result.code_string
+      %td=result.response
+
+
+= link_to 'Edit', edit_query_path(@query)
+\|
+= link_to 'Back', queries_path

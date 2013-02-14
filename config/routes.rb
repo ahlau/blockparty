@@ -1,6 +1,9 @@
 Blockparty::Application.routes.draw do
-  resources :block_list_servers
+  resources :queries
 
+
+  resources :mail_servers
+  resources :block_list_servers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -51,7 +54,7 @@ Blockparty::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'block_list_servers#index'
 
   # See how all your routes lay out with "rake routes"
 

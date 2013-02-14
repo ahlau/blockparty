@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @mail_server.name
+%p
+  %b Ip:
+  = @mail_server.ip
+%p
+  %b Description:
+  = @mail_server.description
+
+= link_to 'Edit', edit_mail_server_path(@mail_server)
+\|
+= link_to 'Back', mail_servers_path
