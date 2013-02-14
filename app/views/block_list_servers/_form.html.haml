@@ -1,0 +1,16 @@
+= form_for @block_list_server do |f|
+  - if @block_list_server.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@block_list_server.errors.count, "error")} prohibited this block_list_server from being saved:"
+      %ul
+        - @block_list_server.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :url
+    = f.text_field :url
+  .actions
+    = f.submit 'Save'

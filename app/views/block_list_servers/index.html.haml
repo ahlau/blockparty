@@ -1,0 +1,21 @@
+%h1 Listing block_list_servers
+
+%table
+  %tr
+    %th Name
+    %th Url
+    %th
+    %th
+    %th
+
+  - @block_list_servers.each do |block_list_server|
+    %tr
+      %td= block_list_server.name
+      %td= block_list_server.url
+      %td= link_to 'Show', block_list_server
+      %td= link_to 'Edit', edit_block_list_server_path(block_list_server)
+      %td= link_to 'Destroy', block_list_server, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Block list server', new_block_list_server_path
