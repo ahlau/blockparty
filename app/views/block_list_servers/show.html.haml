@@ -1,12 +1,11 @@
-%p#notice= notice
+%section
+  %p
+    %b Name:
+    = @block_list_server.name
+  %p
+    %b Url:
+    = @block_list_server.url
 
-%p
-  %b Name:
-  = @block_list_server.name
-%p
-  %b Url:
-  = @block_list_server.url
-
-= link_to 'Edit', edit_block_list_server_path(@block_list_server)
-\|
-= link_to 'Back', block_list_servers_path
+  = link_to 'Edit', edit_block_list_server_path(@block_list_server)
+  \|
+  = link_to 'Back', block_list_servers_path

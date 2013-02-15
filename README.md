@@ -18,7 +18,10 @@ Future
 ------
 
 What features this app does not yet have implemented are:
-* ranges of MailServer, rather than one simple IP
-* delayed job or queueing of DNS Block List lookups for asynchronous DNS requests
+
+* ranges of MailServers, rather than one simple IP
+* <strike>delayed job or queueing of DNS Block List lookups for asynchronous DNS requests</strike>
 * cron or scheduled tasks
 * mailers to notify users of blocked servers 
+* authentication
+* TESTS

@@ -1,23 +1,25 @@
-%h1 Mail Servers
+%section
+  %h1 Mail Servers
 
-%table
-  %tr
-    %th Name
-    %th Ip
-    %th Description
-    %th
-    %th
-    %th
+  %table.table
+    %thead
+      %tr
+        %th Name
+        %th Ip
+        %th Description
+        %th
+        %th
+        %th
+    %tbody
+      - @mail_servers.each do |mail_server|
+        %tr
+          %td= mail_server.name
+          %td= mail_server.ip
+          %td= mail_server.description
+          %td= link_to 'Show', mail_server
+          %td= link_to 'Edit', edit_mail_server_path(mail_server)
+          %td= link_to 'Destroy', mail_server, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-  - @mail_servers.each do |mail_server|
-    %tr
-      %td= mail_server.name
-      %td= mail_server.ip
-      %td= mail_server.description
-      %td= link_to 'Show', mail_server
-      %td= link_to 'Edit', edit_mail_server_path(mail_server)
-      %td= link_to 'Destroy', mail_server, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %br
 
-%br
-
-= link_to 'New Mail server', new_mail_server_path
+  = link_to 'New Mail server', new_mail_server_path
