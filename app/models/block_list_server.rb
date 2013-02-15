@@ -6,8 +6,8 @@ class BlockListServer < ActiveRecord::Base
 
   def query_string(mailserver_ip)
     # validate target_ip
-    uri = URI.parse(mailserver_ip)
-    reversed_octets = mailserver_ip.split('.').reverse
+    uri = URI.parse(url)
+    reversed_octets = mailserver_ip.split('.').reverse.join(".")
     "#{[reversed_octets, uri.host].join(".")}"
   end
 

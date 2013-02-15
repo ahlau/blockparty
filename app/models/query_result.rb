@@ -5,6 +5,7 @@ class QueryResult < ActiveRecord::Base
   NOT_LISTED = 3
   TIMEOUT = 4
   ERROR = 5
+  FAILED = 6
   attr_accessible :code, :end_time, :response, :start_time
 
   def completed(response = nil, start_time = nil, end_time = nil)
@@ -27,6 +28,8 @@ class QueryResult < ActiveRecord::Base
       "timeout"
     when ERROR
       "error"
+    when FAILED
+      "failed"
     else
       "nil"
     end

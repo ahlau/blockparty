@@ -45,8 +45,8 @@ class QueriesController < ApplicationController
 
     respond_to do |format|
       if @query.save
-        @query.perform
-        format.html { redirect_to queries_path, notice: 'Query was successfully created.' }
+        Delayed::Job.enqueue(@query)
+        format.html { redirect_to queries_path, notice: 'Query is being performed.' }
         format.json { render json: @query, status: :created, location: @query }
       else
         format.html { render action: "new" }

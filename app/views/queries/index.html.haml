@@ -5,7 +5,8 @@
     %th Mail Server
     %th Block List Server
     %th Status
-    %th
+    %th Details
+    %th Time
     %th
     %th
 
@@ -14,6 +15,8 @@
       %td= query.mail_server.name
       %td= query.block_list_server.name
       %td= query.query_results.collect{|x| x.code_string}.join(",")
+      %td= query.query_results.first.response.to_s unless query.query_results.empty?
+      %td= query.query_results.first.start_time.to_formatted_s(:long) rescue nil
       %td= link_to 'Show', query
       %td= link_to 'Edit', edit_query_path(query)
       %td= link_to 'Destroy', query, :method => :delete, :data => { :confirm => 'Are you sure?' }

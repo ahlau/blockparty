@@ -12,10 +12,13 @@
   %tr
     %th Status
     %th Response
+    %th Time
   - @query.query_results.each do |result|
     %tr
       %td=result.code_string
       %td=result.response
+      %td=result.start_time
+
 
 
 = link_to 'Edit', edit_query_path(@query)

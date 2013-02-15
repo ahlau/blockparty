@@ -13,12 +13,22 @@ class Query < ActiveRecord::Base
     # throws an exception
     response = nil
     begin
+      puts "query #{block_list_server.query_string(mail_server.ip)}" 
       response = q.query( block_list_server.query_string(mail_server.ip), Dnsruby::Types.A)
+      if (response.answer != nil && response.answer.to_s.match(/127\.0\.0\.2/))
+        puts "query response: #{response.answer.to_s}"
+        result.code = QueryResult::LISTED
+        result.response = response.answer.to_s
+      else
+        result.code = QueryResult::NOT_LISTED
+      end
     rescue Dnsruby::ResolvError
       # if NXDOMAIN (not listed)
+      puts "not listed"
       result.code = QueryResult::NOT_LISTED
     rescue Dnsruby::ResolvTimeout
       # if Timeout error
+      puts "timeout"
       result.code = QueryResult::TIMEOUT
     end
     end_time = Time.now
@@ -26,9 +36,6 @@ class Query < ActiveRecord::Base
     # save
     result.start_time= start_time
     result.end_time = end_time
-    if (result.code == QueryResult::INIT) 
-      
-    end
     result.save
   end
 
