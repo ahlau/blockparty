@@ -1,7 +1,7 @@
 blockparty
 ==========
 
-**Block Party** is a Rails app that provides an interface to check Block List Servers against mail server IP Addresses.
+**Block Party** is a Rails app that provides an interface to check Block List Servers against mail server IP Addresses. It allows you to configure you list of Block List Servers and Mail Servers, record the results of Block List queries and view a history of queries.
 
 Models
 ------
@@ -17,7 +17,7 @@ Models
 Future
 ------
 
-What this app does not yet have featured are:
+What features this app does not yet have implemented are:
 * implement ranges of MailServer, rather than one simple IP
 * implement delayed job or queueing of DNS Block List lookups 
 * implement cron or scheduled tasks
