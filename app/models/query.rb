@@ -39,4 +39,16 @@ class Query < ActiveRecord::Base
     result.save
   end
 
+  def self.query_all_servers
+    counter = 0
+    MailServer.all.each do |mail_server|
+      BlockListServer.all.each do |block_list_server|
+        query = self.create(mail_server_id: mail_server.id, block_list_server_id: block_list_server.id)
+        query.send_later(:perform)
+        counter += 1
+      end
+    end
+    counter
+  end
+
 end

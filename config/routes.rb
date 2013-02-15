@@ -1,7 +1,8 @@
 Blockparty::Application.routes.draw do
+
+
+  match "queries/all" => "queries#all"
   resources :queries
-
-
   resources :mail_servers
   resources :block_list_servers
 

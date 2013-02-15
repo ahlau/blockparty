@@ -10,6 +10,14 @@ class QueriesController < ApplicationController
     end
   end
 
+  def all
+    counter = Query.query_all_servers
+    respond_to do |format|
+      format.html { redirect_to queries_path, notice: "#{counter} queries generated and being performed."}
+      format.json { render json: @queries}
+    end
+  end
+
   # GET /queries/1
   # GET /queries/1.json
   def show
@@ -45,7 +53,7 @@ class QueriesController < ApplicationController
 
     respond_to do |format|
       if @query.save
-        Delayed::Job.enqueue(@query)
+        @query.send_later(:perform)
         format.html { redirect_to queries_path, notice: 'Query is being performed.' }
         format.json { render json: @query, status: :created, location: @query }
       else
