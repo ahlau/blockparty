@@ -6,7 +6,7 @@ blockparty
 Models
 ------
 
-<tt>BlockListServer</tt> models the Block List Servers such as those provided by {surbl.org}[http://www.surbl.org] and {spamhaus.org}[http://www.spamhaus.org].
+<tt>BlockListServer</tt> models the Block List Servers such as those provided by [SURBL](http://www.surbl.org) and [SPAMHAUS](http://www.spamhaus.org).
 
 <tt>MailServer</tt> models the mail server IP addresses to verify against Block List Servers.
 
