@@ -1,5 +1,4 @@
 class CreateQueryResults < ActiveRecord::Migration
-  belongs_to :query
   
   def change
     create_table :query_results do |t|
